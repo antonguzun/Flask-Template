@@ -1,0 +1,11 @@
+/.env
+/black.toml
+*.png
+*.pyc
+*.pyo
+*.ipynb
+.idea
+.idea/*
+.vscode
+.coverage
+venv/*
