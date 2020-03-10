@@ -1,5 +1,4 @@
 /.env
-/black.toml
 *.png
 *.pyc
 *.pyo

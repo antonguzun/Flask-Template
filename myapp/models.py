@@ -1,5 +1,8 @@
 import datetime
-from database import db, Column, Model, SurrogatePK
+
+from database import Column, Model, SurrogatePK
+
+from .app import db
 
 
 class User(SurrogatePK, Model):
@@ -9,7 +12,7 @@ class User(SurrogatePK, Model):
     username = Column(db.String(80), unique=True, nullable=False)
     email = Column(db.String(80), unique=True, nullable=False)
     #: The hashed password
-    password = Column(db.LargeBinary(128), nullable=True)
+    # password = Column(db.LargeBinary(128), nullable=True)
     created_at = Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     first_name = Column(db.String(30), nullable=True)
     last_name = Column(db.String(30), nullable=True)
