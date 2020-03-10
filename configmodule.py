@@ -5,7 +5,7 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "postgresql://verysequrename:pass@notlocalhost:5432/flasktemplate"
+    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:somepass@somehost:5432/flasktemplate"
 
 
 class DevelopmentConfig(Config):

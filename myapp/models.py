@@ -34,4 +34,4 @@ class User(SurrogatePK, Model):
 
     def __repr__(self):
         """Represent instance as a unique string."""
-        return f"<User({self.username!r})>"
+        return f"<User(username: {self.username!r}, id: {self.id})>"

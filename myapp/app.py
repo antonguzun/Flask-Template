@@ -37,3 +37,7 @@ def register_blueprints(app: Flask):
     from myapp.controllers import base_bp
 
     app.register_blueprint(base_bp)
+
+
+if __name__ == "__main__":
+    create_app().run(host="0.0.0.0", debug=True)

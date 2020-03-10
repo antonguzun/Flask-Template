@@ -6,6 +6,11 @@ from flask.views import View
 from myapp.services import get_all_users
 
 
+class Greeting(View):
+    def dispatch_request(self):
+        return "<span style='color:red'>I am app 1</span>"
+
+
 class UserListView(View):
     def dispatch_request(self):
         users = get_all_users()

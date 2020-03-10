@@ -1,0 +1,7 @@
+.git
+.**/*.db
+.**/*.png
+_media
+venv
+.coverage
+.pytest_cache
