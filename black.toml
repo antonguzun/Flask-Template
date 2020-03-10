@@ -6,5 +6,6 @@ exclude = '''
   | venv
   | Makefile
   | README.md
+  | migrations
 )/
 '''

@@ -1,4 +1,4 @@
-from .models import User
+from myapp.models import User
 
 
 def get_all_users():

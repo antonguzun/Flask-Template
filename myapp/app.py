@@ -25,11 +25,15 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(CONFIG_OBJ)
 
-    from .views import UserListView
-
-    app.add_url_rule("/", view_func=UserListView.as_view("users"))
-
     db.init_app(app)
     migrate.init_app(app, db)
 
+    register_blueprints(app)
+
     return app
+
+
+def register_blueprints(app: Flask):
+    from myapp.controllers import base_bp
+
+    app.register_blueprint(base_bp)

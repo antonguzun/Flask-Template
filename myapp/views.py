@@ -3,7 +3,7 @@ import json
 from flask import jsonify
 from flask.views import View
 
-from .services import get_all_users
+from myapp.services import get_all_users
 
 
 class UserListView(View):

@@ -3,6 +3,7 @@ from myapp.models import User
 
 def test_db():
     from myapp.app import db
+
     assert db.engine.url.database.split("_")[0] == "test"
 
     assert User.query.all() == []
