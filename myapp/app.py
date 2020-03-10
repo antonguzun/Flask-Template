@@ -14,12 +14,11 @@ migrate = Migrate()
 load_dotenv()
 
 RUN_MODE = os.getenv("RUN_MODE")  # PROD/DEV/TEST
-CONFIG_OBJ = configmodule.DevelopmentConfig
 
 if RUN_MODE == "PROD":
     CONFIG_OBJ = configmodule.ProductionConfig
-elif RUN_MODE == "TEST":
-    CONFIG_OBJ = configmodule.TestingConfig
+elif RUN_MODE == "DEV":
+    CONFIG_OBJ = configmodule.DevelopmentConfig
 
 
 def create_app():
