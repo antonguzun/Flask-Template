@@ -7,3 +7,9 @@ black-all:
 
 flake8:
 	flake8 --config=setup.cfg
+
+test:
+	coverage run -m pytest
+
+coverage:
+	coverage report
