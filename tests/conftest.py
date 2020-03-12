@@ -1,14 +1,14 @@
 import pytest
 from sqlalchemy import event
 
-from configmodule import TestingConfig
+from configmodule import get_test_settings_object
 from myapp.app import create_app, db as _db
 
 
 @pytest.fixture(scope="session")
 def app():
     app = create_app()
-    app.config.from_object(TestingConfig)
+    app.config.from_object(get_test_settings_object())
     return app
 
 

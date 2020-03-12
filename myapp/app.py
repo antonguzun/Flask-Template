@@ -1,29 +1,17 @@
-import os
-
-from dotenv import load_dotenv
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-import configmodule
+from configmodule import get_settings_object
 
 
 db = SQLAlchemy()
 migrate = Migrate()
 
-load_dotenv()
-
-RUN_MODE = os.getenv("RUN_MODE")  # PROD/DEV/TEST
-
-if RUN_MODE == "PROD":
-    CONFIG_OBJ = configmodule.ProductionConfig
-elif RUN_MODE == "DEV":
-    CONFIG_OBJ = configmodule.DevelopmentConfig
-
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(CONFIG_OBJ)
+    app.config.from_object(get_settings_object())
 
     db.init_app(app)
     migrate.init_app(app, db)

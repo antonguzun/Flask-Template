@@ -2,13 +2,10 @@ version: '3'
 
 services:
   myapp:
+    network_mode: "host"
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
-    command: uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
-    environment:
-      - FLASK_APP=myapp/app
-    env_file:
-    - ./.env_docker
+      - "7777:7777"
+    command: uwsgi --socket 0.0.0.0:7777 --protocol=http -w wsgi:app

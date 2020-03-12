@@ -9,7 +9,7 @@ RUN apk add --no-cache gcc g++ python3 python3-dev musl-dev alpine-sdk linux-hea
     && pip3 install -U cython \
     && pip3 install -U kiwisolver \
     && pip install --no-cache-dir -r requirements.txt \
-    && apk del gcc g++ python3-dev musl-dev alpine-sdk linux-headers postgresql-dev
+    && apk del gcc g++ python3-dev musl-dev alpine-sdk linux-headers
 
 COPY . /myapp-service
-COPY .env_docker /myapp-service/.env
+COPY .env /myapp-service/.env
