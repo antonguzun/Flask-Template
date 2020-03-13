@@ -2,30 +2,20 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-from configmodule import get_settings_object
+from config.configmodule import get_settings_object, setup_logger
+from myapp.controllers import base_bp
 
 
 db = SQLAlchemy()
 migrate = Migrate()
 
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object(get_settings_object())
+setup_logger()
 
-    db.init_app(app)
-    migrate.init_app(app, db)
+app = Flask(__name__)
+app.config.from_object(get_settings_object())
 
-    register_blueprints(app)
+db.init_app(app)
+migrate.init_app(app, db)
 
-    return app
-
-
-def register_blueprints(app: Flask):
-    from myapp.controllers import base_bp
-
-    app.register_blueprint(base_bp)
-
-
-if __name__ == "__main__":
-    create_app().run(host="0.0.0.0", debug=True)
+app.register_blueprint(base_bp)

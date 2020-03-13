@@ -1,8 +1,8 @@
 import pytest
 from sqlalchemy import event
 
-from configmodule import get_test_settings_object
-from myapp.app import create_app, db as _db
+from config.configmodule import get_test_settings_object
+from main import create_app, db as _db
 
 
 @pytest.fixture(scope="session")

@@ -9,3 +9,14 @@ services:
     ports:
       - "7777:7777"
     command: uwsgi --socket 0.0.0.0:7777 --protocol=http -w wsgi:app
+    volumes:
+      - ./logs:/logs
+
+  celery:
+    network_mode: "host"
+    build: .
+    command: celery.py -A config worker -l DEBUG --loglevel=debug
+    volumes:
+      - ./logs:/logs
+    env_file:
+      - .env

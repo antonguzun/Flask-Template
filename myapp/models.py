@@ -1,8 +1,8 @@
 import datetime
 
-from database import Column, Model, SurrogatePK
+from myapp.database import Column, Model, SurrogatePK
 
-from .app import db
+from myapp.app import db
 
 
 class User(SurrogatePK, Model):
