@@ -11,6 +11,7 @@ class User(Base):
     username = Column(String(80), unique=True, nullable=False)
     email = Column(String(80), unique=True, nullable=False)
     first_name = Column(String(80), nullable=True)
+    last_name = Column(String(80), nullable=True)
 
     def __init__(self, username, email):
         """Create instance."""

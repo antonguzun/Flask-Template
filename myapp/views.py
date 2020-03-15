@@ -3,8 +3,8 @@ import json
 from flask import jsonify
 from flask.views import View
 
-from myapp.services import get_all_users
 from myapp.celery import test
+from myapp.services import get_all_users
 
 
 class Greeting(View):
@@ -19,5 +19,7 @@ class UserListView(View):
         users_formatted = []
         response = {"users": users_formatted}
         for user in users:
-            users_formatted.append({"id": user.id, "username": user.username, "email": user.email, "first_name": user.first_name})
+            users_formatted.append(
+                {"id": user.id, "username": user.username, "email": user.email, "first_name": user.first_name}
+            )
         return jsonify(json.dumps(response))

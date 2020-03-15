@@ -1,11 +1,16 @@
 # Flask-Template
-export FLASK_APP="myapp/app.py"
+export env var:
+```
+export PYTHONPATH=/home/username/path/to/project/
+```
 
 run celery:
 
-```celery worker -B -l info --app=myapp```
+```
+celery worker -B -l info --app=myapp
+```
 
 settings for pytest:
 
-PYTHONPATH=. py.test; ENV=TEST
+`PYTHONPATH=. py.test; ENV=TEST`
 
