@@ -7,5 +7,6 @@ exclude = '''
   | Makefile
   | README.md
   | migrations
+  | versions
 )/
 '''

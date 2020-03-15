@@ -33,8 +33,16 @@ class DevelopmentConfig(Config):
 
 
 class TestingConfig(Config):
-    SQL_DB_NAME = f'test_{env("DB_NAME")}'
     TESTING = True
+    POSTGRES_DB = f'test_{env("POSTGRES_DB")}'
+    POSTGRES_HOST = env("POSTGRES_HOST")
+    POSTGRES_PORT = env("POSTGRES_PORT")
+    POSTGRES_USER = env("POSTGRES_USER")
+    POSTGRES_PASSWORD = env("POSTGRES_PASSWORD")
+
+    SQLALCHEMY_DATABASE_URI = (
+        f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+    )
 
 
 def get_settings_object():
@@ -42,7 +50,5 @@ def get_settings_object():
         return DevelopmentConfig
     elif ENV == "production":
         return ProductionConfig
-
-
-def get_test_settings_object():
-    return TestingConfig
+    elif ENV == "TEST":
+        return TestingConfig
