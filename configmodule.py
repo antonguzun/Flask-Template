@@ -13,6 +13,10 @@ class Config(object):
     ENV = ENV
     DEBUG = False
     TESTING = False
+
+    CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+    CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND")
+
     POSTGRES_DB = env("POSTGRES_DB")
     POSTGRES_HOST = env("POSTGRES_HOST")
     POSTGRES_PORT = env("POSTGRES_PORT")
