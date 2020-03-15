@@ -1,16 +1,20 @@
+from database import db_session
 from myapp.models import User
 
 
-def test_db():
-    from myapp.app import db
+class TestDatabase:
+    def test_db(self):
+        assert User.query.all() == []
 
-    assert db.engine.url.database.split("_")[0] == "test"
+        user = User(username="tester", email="tester@gmail.com")
+        db_session.add(user)
+        db_session.commit()
+        assert db_session.query(User).get(user.id) == user
 
-    assert User.query.all() == []
-    user = User.create(username="tester", email="tester@gmail.com")
-    assert User.get_by_id(user.id) == user
-    user.username = "tester_fixed"
-    user.save()
-    assert User.get_by_id(user.id).username == "tester_fixed"
-    user.delete(user.id)
-    assert User.query.all() == []
+        user.username = "tester_fixed"
+        db_session.commit()
+
+        assert db_session.query(User).get(user.id).username == "tester_fixed"
+        db_session.delete(user)
+        db_session.commit()
+        assert User.query.all() == []
