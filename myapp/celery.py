@@ -29,12 +29,7 @@ def setup_periodic_tasks(sender, **kwargs):
     sender.add_periodic_task(30.0, test.s("world"), expires=10)
 
 
-@celery.task()
-def add_together(a, b):
-    return a + b
-
-
-@celery.task()
+@celery.task(ignore_result=True)
 def test(arg):
     print(arg)
     import logging

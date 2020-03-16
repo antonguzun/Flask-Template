@@ -15,7 +15,7 @@ services:
   celery:
     network_mode: "host"
     build: .
-    command: celery worker -B -l info --app=myapp
+    command: celery worker -B -l info --app=myapp --concurrency 1
     volumes:
       - ./logs:/logs
     env_file:
