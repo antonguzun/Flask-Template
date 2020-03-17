@@ -32,11 +32,11 @@ def setup_periodic_tasks(sender, **kwargs):
 @celery.task(ignore_result=True)
 def test(arg):
     print(arg)
-    import logging
     from myapp.models import User
+    from utils.logger import logger
 
-    logging.error(arg)
+    logger.error(arg)
     user = User.query.get(1)
     user.first_name = arg
     db_session.commit()
-    logging.error("Lastname fixed")
+    logger.error("Lastname fixed")
