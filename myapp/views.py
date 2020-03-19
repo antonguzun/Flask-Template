@@ -5,11 +5,13 @@ from flask.views import View
 
 from myapp.celery import test
 from myapp.services import get_all_users
+from utils.logger import logger
 
 
 class Greeting(View):
     def dispatch_request(self):
         test.apply_async(("1245215",),)
+        logger.info("View triggered")
         return "<span style='color:red'>I am app 1</span>"
 
 

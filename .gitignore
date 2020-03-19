@@ -8,5 +8,6 @@
 .vscode
 .coverage
 venv/*
+*.log
 
 /.env_docker

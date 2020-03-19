@@ -13,3 +13,5 @@ RUN apk add --no-cache gcc g++ python3 python3-dev musl-dev alpine-sdk linux-hea
 
 COPY . /myapp-service
 COPY .env /myapp-service/.env
+
+VOLUME /logs
