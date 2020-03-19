@@ -36,7 +36,10 @@ def test(arg):
     from utils.logger import logger
 
     logger.error(arg)
-    user = User.query.get(1)
+    try:
+        user = User.query.get(1)
+    except AttributeError as e:
+        logger.error(str(e), exc_info=True)
     user.first_name = arg
     db_session.commit()
     logger.error("Lastname fixed")

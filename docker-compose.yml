@@ -10,13 +10,13 @@ services:
       - "7777:7777"
     command: uwsgi --socket 0.0.0.0:7777 --protocol=http -w wsgi:app
     volumes:
-      - ./logs:/logs_docker
+      - ./docker_logs:/myapp-service/logs
 
   celery:
     network_mode: "host"
     build: .
-    command: celery worker -B -l info --app=myapp --concurrency 1
+    command: celery -A myapp.celery worker -B -l info  --concurrency 1
     volumes:
-      - ./logs:/logs_docker
+      - ./docker_logs:/myapp-service/logs
     env_file:
       - .env
