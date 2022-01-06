@@ -4,7 +4,7 @@ appdirs==1.4.3
 attrs==19.3.0
 billiard==3.6.3.0
 black==19.10b0
-celery==4.4.1
+celery==5.2.2
 click==7.1
 coverage==5.0.3
 entrypoints==0.3
